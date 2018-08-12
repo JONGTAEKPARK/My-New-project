@@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -25,6 +25,8 @@
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
 				<li><a href="bbs.jsp">게시판</a></li>
+				<li><a href="my.jsp">내꺼</a></li>
+				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -41,7 +43,21 @@
 		</div>
 	</nav>
 	<div class="container">
-	
+		 <div class="col-lg-4"></div>
+		 <div class="col-lg-4">
+		 	<div class="jumbotron" style="padding-top: 20px;">
+		 		<form action ="loginAction.jsp "method="post">
+		 			<h3 style="text-align: center;">로그인 화면</h3>
+		 			<div class="form-group">
+		 				<input type="text" class="form-control" placeholder="아이디를 입력하시오" name="userID" maxlength="20"/>
+		 			</div>
+		 		<div class="form-group">
+		 				<input type="password" class="form-control" placeholder="비밀번호를 입력하시오" name="userPassword" maxlength="20"/>	
+		 		</div>
+		 				<input type="submit" class="btn btn-primary form-control" value="로그인"/>
+		 		</form>
+		 </div>
+		 <div class="col-lg-4"></div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
