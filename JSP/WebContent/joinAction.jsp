@@ -6,6 +6,9 @@
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
+<jsp:setProperty name="user" property="userName" />
+<jsp:setProperty name="user" property="userGender" />
+<jsp:setProperty name="user" property="userEmail" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +17,12 @@
 </head>
 <body>
  <%
+ 	if(user.getUserID() == null || user.getUserPassword() == null || user.getUserName() == null
+ 	|| user.getUserGender() == null || user.getUserEmail() == null){
+ 		
+ 	}
+ 
+ 
   UserDAO userDAO = new UserDAO();
   int result = userDAO.login(user.getUserID(), user.getUserPassword());
   if (result == 1) {

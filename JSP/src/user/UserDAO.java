@@ -6,47 +6,55 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class UserDAO {
-	
+
 	private Connection conn;
-	private PreparedStatement pstm;
+	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
+
 	public UserDAO() {
 		try {
-			String dbURL = "jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=utf8";
+			String dbURL = "jdbc:mysql://localhost:3306/bbs";
 			String dbID = "root";
-			String dbPassword = "12345";
+			String dbPassword = "1234";
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(dbURL,dbID,dbPassword);
-		}catch(Exception e) {
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public int login(String userID, String userPassword) {
-		String SQL ="select userPassword from user where userID=?"; 
+		String SQL = "SELECT userPassword FROM user WHERE  userID = ?";
 		try {
-			pstm = conn.prepareStatement(SQL);
-			pstm.setString(1, userID);
-			rs = pstm.executeQuery();
-			if(rs.next()) {
-				if(rs.getString(1).equals(userPassword)) {
-					
-					System.out.println("·Ï±×ÀÎ ¼º°ø");
-					return 1;
-				}
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				if (rs.getString(1).equals(userPassword))
+					return 1; // ë¡œê·¸ì¸ ì„±ê³µ
 				else
-					System.out.println("ºñ¹Ğ¹øÈ£°ú Æ²¸³´Ï´Ù.");
-					return 0;
+					return 0; // ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜
 			}
-			
-			System.out.println("¾ÆÀÌµğ ¾øÀ½"); // ¾ÆÀÌµğ°¡ ¾øÀ½
-			return -1;
+			return -1; // ì•„ì´ë””ê°€ ì—†ìŒ
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -2; // ë°ì´í„°ë² ì´ìŠ¤ ì˜¤ë¥˜
+	}
+	public int join(User user) {
+		String SQL = "insert into user values(?,?,?,?,?);";
+		try {
+				pstmt = conn.prepareStatement(SQL);
+				pstmt.setString(1, user.getUserID());
+				pstmt.setString(2, user.getUserPassword());
+				pstmt.setString(3, user.getUserName());
+				pstmt.setString(4, user.getUserGender());
+				pstmt.setString(5, user.getUserEmail());
+		
+				return pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println("µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù"); // µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
-		return -2; 
+		return -1; //ë°ì´í„°ë² ì´ìŠ¤ ì˜¤ë¥˜
 	}
 }
