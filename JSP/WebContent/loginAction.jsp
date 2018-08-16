@@ -40,6 +40,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("location.href = 'main.jsp'");
+			script.println("alert('로그인 되었습니다')");
 			script.println("</script>");
 		} else if (result == 0) {
 			PrintWriter script = response.getWriter();
