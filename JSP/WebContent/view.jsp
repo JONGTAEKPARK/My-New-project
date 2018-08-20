@@ -15,6 +15,7 @@
 <title>JSP 게시판 웹 사이트</title>
 </head>
 <body>
+
 	<%
 		String userID = null;
 		if (session.getAttribute("userID") != null){
@@ -118,7 +119,7 @@
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td colspan="2" style="min-height: 200px; text-align: left;"> <%= bbs.getBbsContent().replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>") %> </td>
+						<td colspan="2" style="min-height: 200px; text-align: left;"> <%= bbs.getBbsContent().replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>") %></td>
 					</tr>
 					
 				</tbody>
@@ -137,7 +138,6 @@
 			
 		</div>
 	</div>
-	
 	
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

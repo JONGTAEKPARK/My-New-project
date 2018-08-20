@@ -71,6 +71,7 @@
 				
 					<ul class="dropdown-menu">
 						<li><a href="logoutAction.jsp">로그아웃</a></li>
+						<li><a href="logoutAction.jsp">내 정보 수정</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -117,7 +118,7 @@
 				
 		</div>
 	</div>
-	
+	<jsp:include page="/basic_copyright.jsp" flush="true"/>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
