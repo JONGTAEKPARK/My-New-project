@@ -1,4 +1,4 @@
-package bbs;
+package lecture;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,13 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class BbsDAO {
+
+
+
+
+public class LectureDAO {
 
 	private Connection conn;
 
 	private ResultSet rs;
 
-	public BbsDAO() {
+	public LectureDAO() {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/bbs?useUnicode=true&characterEncoding=utf8";
 			String dbID = "root";
@@ -23,7 +27,9 @@ public class BbsDAO {
 			e.printStackTrace();
 		}
 	}
-
+		
+	
+	
 	public String getDate() {
 		String SQL = "select now()";
 		try {
@@ -38,9 +44,9 @@ public class BbsDAO {
 		return ""; // 데이터 베이스 오류
 
 	}
-
+	
 	public int getNext() {
-		String SQL = "select bbsID from bbs order by bbsID desc";
+		String SQL = "select seqno from lecture order by seqno desc";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
@@ -54,17 +60,18 @@ public class BbsDAO {
 		return -1; // 데이터 베이스 오류
 
 	}
-
-	public int write(String bbsTitle, String userID, String bbsContent) {
-		String SQL = "insert into bbs values(?,?,?,?,?,?)";
+	
+	public int write(String title, String content, String writer ,String readID) {
+		String SQL = "insert into lecture values(?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
-			pstmt.setString(2, bbsTitle);
-			pstmt.setString(3, userID);
-			pstmt.setString(4, getDate());
-			pstmt.setString(5, bbsContent);
-			pstmt.setInt(6, 1);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			pstmt.setString(4, writer);
+			pstmt.setString(5, getDate());
+			pstmt.setString(6, readID);
+			pstmt.setInt(7, 1);
 			return pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -72,35 +79,36 @@ public class BbsDAO {
 		}
 		return -1; // 데이터 베이스 오류
 
-	}
-
-	// 게시판 목록 확인
-	public ArrayList<Bbs> getList(int pageNumber) {
-		String SQL = "select * from bbs where bbsID < ? and bbsAvailable = 1 order by bbsID desc limit 10";
-		ArrayList<Bbs> list = new ArrayList<Bbs>();
+	} 
+	
+	
+	public ArrayList<Lecture> getList(int pageNumber) {
+		String SQL = "select * from lecture where seqno < ? and bbsAvailable = 1 order by seqno desc limit 10";
+		ArrayList<Lecture> list = new ArrayList<Lecture>();
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				Bbs bbs = new Bbs();
-				bbs.setBbsID(rs.getInt(1));
-				bbs.setBbsTitle(rs.getString(2));
-				bbs.setUserID(rs.getString(3));
-				bbs.setBbsDate(rs.getString(4));
-				bbs.setBbsContent(rs.getString(5));
-				bbs.setBbsAvailable(rs.getInt(6));
-				list.add(bbs);
+				Lecture lecture = new Lecture();
+				lecture.setSeqno(rs.getInt(1));
+				lecture.setTitle(rs.getString(2));
+				lecture.setContent(rs.getString(3));
+				lecture.setWriter(rs.getString(4));
+				lecture.setWdate(rs.getString(5));
+				lecture.setReadID(rs.getString(6));
+				lecture.setBbsAvailable(rs.getInt(7));
+				list.add(lecture);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list; // 데이터 베이스 오류
 	}
-
+	
 	public boolean nextPage(int pageNumber) {
-		String SQL = "select * from bbs where bbsID < ? and bbsAvailable = 1 ";
+		String SQL = "select * from lecture where seqno < ? and bbsAvailable = 1 ";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -114,38 +122,39 @@ public class BbsDAO {
 		}
 		return false; // 데이터 베이스 오류
 	}
-
-	public Bbs getBbs(int bbsID) {
-		String SQL = "select * from bbs where bbsID = ? ";
+	public Lecture getLecture(int seqno) {
+		String SQL = "select * from bbs where seqno = ? ";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, bbsID);
+			pstmt.setInt(1, seqno);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				Bbs bbs = new Bbs();
-				bbs.setBbsID(rs.getInt(1));
-				bbs.setBbsTitle(rs.getString(2));
-				bbs.setUserID(rs.getString(3));
-				bbs.setBbsDate(rs.getString(4));
-				bbs.setBbsContent(rs.getString(5));
-				bbs.setBbsAvailable(rs.getInt(6));
-				return bbs;
+				Lecture lecture = new Lecture();
+				lecture.setSeqno(rs.getInt(1));
+				lecture.setTitle(rs.getString(2));
+				lecture.setContent(rs.getString(3));
+				lecture.setWriter(rs.getString(4));
+				lecture.setWdate(rs.getString(5));
+				lecture.setReadID(rs.getString(6));
+				lecture.setBbsAvailable(rs.getInt(7));
+				return lecture;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null; // 데이터 베이스 오류
 	}
-
-	public int update(int bbsID, String bbsTitle, String bbsContent) {
-		String SQL = "update bbs set bbsTitle = ?, bbsContent = ? where bbsID = ?";
+	
+	public int update(int seqno, String title, String content , String readID) {
+		String SQL = "update lecture set title = ?, content = ? , readID = ? where seqno = ? ";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, bbsTitle);
-			pstmt.setString(2, bbsContent);
-			pstmt.setInt(3, bbsID);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, readID);
+			pstmt.setInt(4, seqno);
 			return pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -154,13 +163,13 @@ public class BbsDAO {
 		return -1; // 데이터 베이스 오류
 
 	}
-
-	public int delete(int bbsID) {
-		String SQL = "update bbs set bbsAvailable= 0  where bbsID = ?";
+	
+	public int delete(int seqno) {
+		String SQL = "update lecture set bbsAvailable= 0  where seqno = ?";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, bbsID);
+			pstmt.setInt(1, seqno);
 			return pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -169,4 +178,6 @@ public class BbsDAO {
 		return -1; // 데이터 베이스 오류
 
 	}
-}
+	
+	}
+

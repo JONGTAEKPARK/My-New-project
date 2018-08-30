@@ -36,8 +36,9 @@
 		<div class="collapase navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li class="active"><a href="bbs.jsp">게시판</a></li>
-				<li><a href="lecture.jsp">내꺼</a></li>
+				<li class="active"><a href="lecture.jsp">강의</a></li>
+				<li><a href="bbs.jsp">게시판</a></li>
+		
 				
 			</ul>
 			<%
@@ -85,25 +86,29 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-		<form method="post" action="writeAction.jsp">
+		<form method="post" action="lecutWriteAction.jsp">
 			<table class="table table-striped" style="text-align : center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan="2" style="background-color: #eeeeee; text-align: center;">글쓰기 양식</th>
+						<th colspan="2" style="background-color: #eeeeee; text-align: center;">강의 등록 양식</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+						<td><input type="text" class="form-control" placeholder="강의 이름" name="title" maxlength="50"></td>
 						
 					</tr>
 					<tr>
-						<td><textarea  class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height: 350px;"></textarea></td>
+						<td><input type="text" class="form-control" placeholder="유투브 아이디코드" name="readID" maxlength="50"></td>
+						
+					</tr>
+					<tr>
+						<td><textarea  class="form-control" placeholder="강의 내용" name="content" maxlength="2048" style="height: 350px;"></textarea></td>
 					</tr>
 				</tbody>
 				
 			</table>
-			<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+			<input type="submit" class="btn btn-primary pull-right" value="강의 등록">
 			</form>
 		</div>
 	</div>

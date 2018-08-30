@@ -65,7 +65,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
 				<li class="active"><a href="bbs.jsp">게시판</a></li>
-				<li><a href="my.jsp">내꺼</a></li>
+				<li><a href="lecture.jsp">내꺼</a></li>
 
 			</ul>
 		
