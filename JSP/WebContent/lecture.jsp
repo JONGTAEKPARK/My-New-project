@@ -114,27 +114,25 @@
 							</tr>
 						</thead>
 						
-						
-						
 						<tbody>
+						
+							<%LectureDAO lectureDAO = new LectureDAO();
+							  ArrayList<Lecture> list = lectureDAO.getList(pageNumber);	
+							  for (int i =0; i < list.size(); i++){
+							%>
+						
+						
 							<tr>
-									<td>마크주커버그</td>
-								<td>1</td>
-								<td><a href="lectureBaseball.jsp">농구 기초 프로그래밍 강좌</a></td>
-								<td>2018-08-28</td>
-							</tr>
-							<tr>
-							<td>마크주커버그</td>
-								<td>2</td>
-								<td><a href="lectureProgram.jsp">프로그래밍 기초</a></td>								<td>2018-08-28</td>
-							</tr>
-							<tr>
-								<td>유하</td>
-								<td>3</td>
-								<td><a href="lectureNihon.jsp">일본 기초 강좌</a></td>
-								<td>2018-08-28</td>
+								<td><%= list.get(i).getWriter() %></td>
+								<td><%= list.get(i).getSeqno() %></td>
+								<td><a href="lectureBaseball.jsp"><%= list.get(i).getTitle() %></a></td>
+								<td><%= list.get(i).getWdate().substring(0, 11) %></td>
 							</tr>
 							
+							
+							<%
+							  }
+							%>
 						</tbody>
 					</table>
 	

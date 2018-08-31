@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
+<%@ page import="lecture.LectureDAO"%>
+<%@ page import="lecture.Lecture"%>
+<%@ page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,11 +17,15 @@
 </head>
 <body>
 
-	</style>
+
 	<%
 		String userID = null;
 		if (session.getAttribute("userID") != null) {
 			userID = (String) session.getAttribute("userID");
+		}
+		int pageNumber = 1; //기본페이지 
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
 	%>
 
@@ -96,41 +103,22 @@
 							</div>
 						</div>
 					</div>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>강사명</th>
-								<th>강의 번호</th>
-								<th>강의 제목</th>
-								<th>강의 날짜</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>박종택</td>
-								<td>1강</td>
-								<td><a href="#">오리엔테이션</a></td>
-								<td>2018-08-28</td>
-							</tr>
-							<tr>
-								<td>박종택</td>
-								<td>2강</td>
-								<td><a href="#">패스 </a></td>
-								<td>2018-08-28</td>
-							</tr>
-							<tr>
-								<td>박종택</td>
-								<td>3강</td>
-								<td><a href="#">슛</a></td>
-								<td>2018-08-28</td>
-							</tr>
-						</tbody>
-					</table>
+					
+						
+						
 
 					<div class="row">
 						<div class="embed-responsive embed-responsive-16by9">
 							<iframe class="embed-responsive-item"
-								src="https://www.youtube.com/embed/OMZjfxrtMxE"></iframe>
+							
+							<% LectureDAO lectureDAO = new LectureDAO();
+							   ArrayList<Lecture> list = lectureDAO.getList(pageNumber);	
+							   for (int i =0; i < list.size(); i++){
+							%>
+								src="https://www.youtube.com/embed/<%=list.get(i).getReadID()%>"></iframe>
+					<%
+							  }
+							%>
 						</div>
 					</div>
 

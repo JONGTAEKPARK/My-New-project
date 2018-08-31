@@ -6,10 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-
-
-
-
 public class LectureDAO {
 
 	private Connection conn;
@@ -83,7 +79,7 @@ public class LectureDAO {
 	
 	
 	public ArrayList<Lecture> getList(int pageNumber) {
-		String SQL = "select * from lecture where seqno < ? and bbsAvailable = 1 order by seqno desc limit 10";
+		String SQL = "select * from lecture where seqno < ? and bbsAvailable = 1 order by seqno asc limit 10";
 		ArrayList<Lecture> list = new ArrayList<Lecture>();
 
 		try {
@@ -122,6 +118,7 @@ public class LectureDAO {
 		}
 		return false; // 데이터 베이스 오류
 	}
+	
 	public Lecture getLecture(int seqno) {
 		String SQL = "select * from bbs where seqno = ? ";
 
@@ -178,6 +175,7 @@ public class LectureDAO {
 		return -1; // 데이터 베이스 오류
 
 	}
+	
 	
 	}
 
