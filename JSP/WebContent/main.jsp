@@ -118,8 +118,6 @@
 								<div id="collapse1" class="panel-collapse collapse">
 									<ul class="list-group">
 										<li class="list-group-item"><a href="lectureBaseball.jsp">오리엔테이션</a></li>
-										<li class="list-group-item"><a href="">1강 패스</a></li>
-										<li class="list-group-item"><a href="">2강 슛</a></li>
 									
 									</ul>
 								</div>
@@ -145,9 +143,8 @@
 										</div>
 										<div id="collapse2" class="panel-collapse collapse">
 											<ul class="list-group2">
-												<li class="list-group-item">오리엔테이션</li>
-												<li class="list-group-item">변수란</li>
-												<li class="list-group-item">데이터타입이란</li>
+												<li class="list-group-item"><a href="lectureProgram.jsp"> 오리엔테이션</a></li>
+											
 											</ul>
 										</div>
 									</div>
@@ -175,8 +172,7 @@
 									<div id="collapse3" class="panel-collapse collapse">
 										<ul class="list-group">
 											<li class="list-group-item"><a href="lectureNihon.jsp"> 오리엔테이션</a></li>
-											<li class="list-group-item">히라가나</li>
-											<li class="list-group-item">가타카나</li>
+										
 										</ul>
 									</div>
 								</div>

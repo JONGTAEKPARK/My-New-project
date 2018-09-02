@@ -16,7 +16,7 @@ public class LectureDAO {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/bbs?useUnicode=true&characterEncoding=utf8";
 			String dbID = "root";
-			String dbPassword = "12345";
+			String dbPassword = "1234";
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {

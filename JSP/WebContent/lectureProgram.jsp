@@ -96,36 +96,7 @@
 							</div>
 						</div>
 					</div>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>강사명</th>
-								<th>강의 번호</th>
-								<th>강의 제목</th>
-								<th>강의 날짜</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>마크 주커버그</td>
-								<td>1</td>
-								<td><a href="">오리엔테이션</a></td>
-								<td>2018-08-28</td>
-							</tr>
-							<tr>
-								<td>마크 주커버그</td>
-								<td>2</td>
-								<td><a href="#">변수란</a></td>
-								<td>2018-08-28</td>
-							</tr>
-							<tr>
-								<td>마크 주커버그</td>
-								<td>3</td>
-								<td><a href="#">데이터 타입이란</a></td>
-								<td>2018-08-28</td>
-							</tr>
-						</tbody>
-					</table>
+					
 					<div class="row">
 						<div class="embed-responsive embed-responsive-16by9">
 							<iframe class="embed-responsive-item"

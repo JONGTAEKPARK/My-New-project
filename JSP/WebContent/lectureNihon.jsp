@@ -96,40 +96,11 @@
 							</div>
 						</div>
 					</div>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>강사명</th>
-								<th>강의 번호</th>
-								<th>강의 제목</th>
-								<th>강의 날짜</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>유하 센세이</td>
-								<td>1강</td>
-								<td><a href="">오리엔테이션</a></td>
-								<td>2018-08-28</td>
-							</tr>
-							<tr>
-								<td>유하 센세이</td>
-								<td>2강</td>
-								<td><a href="">히라가나</a></td>
-								<td>2018-08-28</td>
-							</tr>
-							<tr>
-								<td>유하 센세이</td>
-								<td>3강</td>
-								<td><a href="#">가타카나</a></td>
-								<td>2018-08-28</td>
-							</tr>
-						</tbody>
-					</table>
+					
 					<div class="row">
 						<div class="embed-responsive embed-responsive-16by9">
 							<iframe class="embed-responsive-item"
-								src="https://www.youtube.com/embed/-SxKVkSyrco"></iframe>
+								src="https://www.youtube.com/embed/FsEDd4d8INs"></iframe>
 						</div>
 					</div>
 

@@ -111,14 +111,9 @@
 						<div class="embed-responsive embed-responsive-16by9">
 							<iframe class="embed-responsive-item"
 							
-							<% LectureDAO lectureDAO = new LectureDAO();
-							   ArrayList<Lecture> list = lectureDAO.getList(pageNumber);	
-							   for (int i =0; i < list.size(); i++){
-							%>
-								src="https://www.youtube.com/embed/<%=list.get(i).getReadID()%>"></iframe>
-					<%
-							  }
-							%>
+							
+								src="https://www.youtube.com/embed/i3r341_Ro8k"></iframe>
+					
 						</div>
 					</div>
 
